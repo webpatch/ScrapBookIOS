@@ -49,7 +49,7 @@ class ViewController: UIViewController {
     {
 //        let q = NSOperationQueue()
 //        q.maxConcurrentOperationCount = 5
-        for path in pathArr{
+        for path in allFiles{
             var r = NSMutableURLRequest(URL: NSURL(string:"https://api-content.dropbox.com/1/files/auto/\(path)")!)
             r.addValue("Bearer Pug6-mtEkpIAAAAAAAAEBuyS-WWaUXlpG_VGHZn5EUzx9BJewqVuiOpIPfpXspi-", forHTTPHeaderField: "Authorization")
            
