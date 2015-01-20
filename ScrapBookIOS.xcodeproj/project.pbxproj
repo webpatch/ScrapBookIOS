@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		412BDC0B1A6E4CF000AD774D /* json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412BDC0A1A6E4CF000AD774D /* json.swift */; };
 		4154686B1A6E2B2200E4F255 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4154686A1A6E2B2200E4F255 /* AppDelegate.swift */; };
 		4154686D1A6E2B2200E4F255 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4154686C1A6E2B2200E4F255 /* ViewController.swift */; };
 		415468701A6E2B2200E4F255 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4154686E1A6E2B2200E4F255 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		05ADB03A8E6A27046177DF38 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FC7DC2E25DEA01BE523ACD9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		412BDC0A1A6E4CF000AD774D /* json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = json.swift; sourceTree = "<group>"; };
 		415468651A6E2B2200E4F255 /* ScrapBookIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrapBookIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		415468691A6E2B2200E4F255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4154686A1A6E2B2200E4F255 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,7 @@
 		4154687A1A6E2B2200E4F255 /* ScrapBookIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScrapBookIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4154687F1A6E2B2200E4F255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		415468801A6E2B2200E4F255 /* ScrapBookIOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapBookIOSTests.swift; sourceTree = "<group>"; };
+		4154688A1A6E412100E4F255 /* Bridge-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
 		7F5EA4CB1DF08E5DCACC4E69 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,12 +96,14 @@
 		415468671A6E2B2200E4F255 /* ScrapBookIOS */ = {
 			isa = PBXGroup;
 			children = (
+				412BDC0A1A6E4CF000AD774D /* json.swift */,
 				4154686A1A6E2B2200E4F255 /* AppDelegate.swift */,
 				4154686C1A6E2B2200E4F255 /* ViewController.swift */,
 				4154686E1A6E2B2200E4F255 /* Main.storyboard */,
 				415468711A6E2B2200E4F255 /* Images.xcassets */,
 				415468731A6E2B2200E4F255 /* LaunchScreen.xib */,
 				415468681A6E2B2200E4F255 /* Supporting Files */,
+				4154688A1A6E412100E4F255 /* Bridge-Header.h */,
 			);
 			path = ScrapBookIOS;
 			sourceTree = "<group>";
@@ -273,6 +278,7 @@
 			files = (
 				4154686D1A6E2B2200E4F255 /* ViewController.swift in Sources */,
 				4154686B1A6E2B2200E4F255 /* AppDelegate.swift in Sources */,
+				412BDC0B1A6E4CF000AD774D /* json.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +408,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ScrapBookIOS/Bridge-Header.h";
 			};
 			name = Debug;
 		};
@@ -414,6 +421,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ScrapBookIOS/Bridge-Header.h";
 			};
 			name = Release;
 		};
