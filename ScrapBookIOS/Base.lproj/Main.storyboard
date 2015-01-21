@@ -51,9 +51,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="main" id="tHM-UJ-2q9">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="9ZL-Pn-OP2">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="WKM-b1-78P">
                             <connections>
-                                <action selector="test:" destination="6iU-JN-Yck" id="sDO-Mz-cRM"/>
+                                <action selector="press:" destination="6iU-JN-Yck" id="a4i-mL-CpS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

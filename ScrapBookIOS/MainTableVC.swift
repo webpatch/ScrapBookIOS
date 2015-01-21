@@ -7,52 +7,66 @@
 //
 
 import Foundation
-class MainTableVC:UITableViewController {
-    var dataArr:[Folder]!
+class MainTableVC:FolderTableVC,DBRestClientDelegate {
+    
+    var restClient:DBRestClient!
+    
+    let docPath = NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false, error: nil)!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("load")
-        dataArr = [Folder]()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "initRs", name: "RDF_INIT_COMPLETE", object: nil)
+//        let targetPath = docPath.URLByAppendingPathComponent("/ScrapBook")
+//         NSFileManager.defaultManager().createDirectoryAtURL(targetPath, withIntermediateDirectories: true, attributes: nil, error: nil)
         
-        RDF.sharedInstance()
+        let rdfPath = "/ScrapBook/scrapbook.rdf"
+        NSFileManager.defaultManager().createDirectoryAtPath(docPath.path!.stringByAppendingPathComponent(rdfPath), withIntermediateDirectories: true, attributes: nil, error: nil)
+        
+        let db = DBSession(appKey: "vm6itv923vwov70", appSecret: "8whkfns7bu4b7zf", root: kDBRootDropbox)
+        DBSession.setSharedSession(db)
+        
+        restClient = DBRestClient(session: db)
+        restClient.delegate = self
+        
+//        restClient.loadFile("/ScrapBook/scrapbook.rdf", intoPath: "\(docPath.path!)/ScrapBook/scrapbook.rdf")
+        restClient.loadFile("/scrapbook/data/20150120120833/process_thread_task.png", intoPath: "\(docPath.path!)/scrapbook/data/20150120120833/process_thread_task.png")
+        
+//        restClient.loadMetadata("/ScrapBook/data")
     }
     
-    @IBAction func test(sender: AnyObject) {
-        
-        let f2 = Folder()
-        f2.title = "gg"
-        
-        let f3 = Folder()
-        f3.title = "ggddd"
-        
-        
-        self.dataArr = [Folder(),f2,f3]
-        self.tableView.reloadData()
+    func restClient(client: DBRestClient!, loadFileFailedWithError error: NSError!) {
+        println("There was an error loading the file: \(error) ")
     }
     
-    func initRs()
-    {
-        self.dataArr = RDF.getFolderList("urn:scrapbook:root")
-        println(self.dataArr)
-        self.tableView.reloadData()
+    
+    func restClient(client: DBRestClient!, loadedFile destPath: String!, contentType: String!, metadata: DBMetadata!) {
+        println("File loaded into path: \(destPath)")
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        println("update")
-        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("TableCell") as? UITableViewCell
-        if cell == nil{
-            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "TableCell")
+    func restClient(client: DBRestClient!, loadedMetadata metadata: DBMetadata!) {
+        if(metadata.isDirectory)
+        {
+//            println("Folder \(metadata.path) contains:")
+           NSFileManager.defaultManager().createDirectoryAtPath("\(docPath.path!)\(metadata.path)", withIntermediateDirectories: true, attributes: nil, error: nil)
+            for file:DBMetadata in metadata.contents as [DBMetadata]
+            {
+                println("\(metadata.path)/\(file.filename)")
+                restClient.loadFile("\(metadata.path)/\(file.filename)", intoPath: "\(docPath.path!)\(metadata.path)/\(file.filename)")
+                if (file.isDirectory){
+                    restClient.loadMetadata("/ScrapBook/data/\(file.filename!)")
+                }
+            }
         }
-        cell!.textLabel!.text = dataArr[indexPath.row].title
-        return cell!
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+    func restClient(client: DBRestClient!, loadMetadataFailedWithError error: NSError!) {
+        println("Error loading metadata: \(error)")
     }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataArr.count
+    
+    
+    @IBAction func press(sender: AnyObject) {
+        if !DBSession.sharedSession().isLinked()
+        {
+            DBSession.sharedSession().linkFromController(self)
+        }
     }
 }
