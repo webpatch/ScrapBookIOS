@@ -20,11 +20,14 @@ PODS:
   - AFNetworking/UIKit (2.5.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Ono (1.1.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.0)
+  - Ono
 
 SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
+  Ono: cf5cb37c76225200d6f063e4189c15b4b6c9d5fe
 
 COCOAPODS: 0.34.4
