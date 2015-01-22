@@ -20,16 +20,19 @@ PODS:
   - AFNetworking/UIKit (2.5.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - ConciseKit (0.1.2)
   - Dropbox-iOS-SDK (1.3.13)
   - Ono (1.1.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.0)
+  - ConciseKit (~> 0.1.2)
   - Dropbox-iOS-SDK
   - Ono
 
 SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
+  ConciseKit: abaee9f102396b59cccdb812b78527c7a24cda61
   Dropbox-iOS-SDK: 367160c05e279e7fa3205f3233d1873b7a986ee6
   Ono: cf5cb37c76225200d6f063e4189c15b4b6c9d5fe
 

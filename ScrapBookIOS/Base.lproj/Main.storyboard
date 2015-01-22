@@ -21,6 +21,39 @@
             </objects>
             <point key="canvasLocation" x="392" y="73"/>
         </scene>
+        <!--ReaderVC-->
+        <scene sceneID="GS6-Po-zMx">
+            <objects>
+                <viewController storyboardIdentifier="ReaderVC" id="vMt-xx-wiu" customClass="ReaderVC" customModule="ScrapBookIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uS4-oW-Y4O"/>
+                        <viewControllerLayoutGuide type="bottom" id="Sew-Xm-ABX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FTm-hR-8by">
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xDt-Fy-9cg">
+                                <rect key="frame" x="0.0" y="6" width="600" height="588"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xDt-Fy-9cg" firstAttribute="leading" secondItem="FTm-hR-8by" secondAttribute="leading" id="5n4-E6-EIE"/>
+                            <constraint firstAttribute="bottom" secondItem="xDt-Fy-9cg" secondAttribute="bottom" constant="6" id="Q7V-ir-Acy"/>
+                            <constraint firstItem="xDt-Fy-9cg" firstAttribute="top" secondItem="FTm-hR-8by" secondAttribute="top" constant="6" id="jzD-Wz-Rk8"/>
+                            <constraint firstAttribute="trailing" secondItem="xDt-Fy-9cg" secondAttribute="trailing" id="tB7-YF-RMz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="xDt-Fy-9cg" id="5jA-Od-zCl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IKf-60-Otx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1859" y="-29"/>
+        </scene>
         <!--main-->
         <scene sceneID="dE0-KE-7q9">
             <objects>
@@ -50,17 +83,14 @@
                             <outlet property="delegate" destination="6iU-JN-Yck" id="mod-Kx-JtB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="main" id="tHM-UJ-2q9">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="WKM-b1-78P">
-                            <connections>
-                                <action selector="press:" destination="6iU-JN-Yck" id="a4i-mL-CpS"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="main" id="tHM-UJ-2q9"/>
+                    <connections>
+                        <segue destination="vMt-xx-wiu" kind="show" identifier="ToReader" id="bRZ-Dm-pSL"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oc4-x7-JJi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1104" y="67"/>
+            <point key="canvasLocation" x="1122" y="-11"/>
         </scene>
     </scenes>
 </document>

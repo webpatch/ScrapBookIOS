@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 0
 
+// ConciseKit
+#define COCOAPODS_POD_AVAILABLE_ConciseKit
+#define COCOAPODS_VERSION_MAJOR_ConciseKit 0
+#define COCOAPODS_VERSION_MINOR_ConciseKit 1
+#define COCOAPODS_VERSION_PATCH_ConciseKit 2
+
 // Dropbox-iOS-SDK
 #define COCOAPODS_POD_AVAILABLE_Dropbox_iOS_SDK
 #define COCOAPODS_VERSION_MAJOR_Dropbox_iOS_SDK 1

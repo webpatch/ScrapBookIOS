@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		332974351A6FD8CC00DBC453 /* FolderTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332974341A6FD8CC00DBC453 /* FolderTableVC.swift */; };
 		3378270F1A6FFC64005E723F /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3378270E1A6FFC64005E723F /* TableViewController.m */; };
+		4126FD1C1A70E30B00C24380 /* scrapbook.rdf in Resources */ = {isa = PBXBuildFile; fileRef = 4126FD1B1A70E30B00C24380 /* scrapbook.rdf */; };
+		4126FD1E1A70E5C800C24380 /* Dropbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4126FD1D1A70E5C800C24380 /* Dropbox.swift */; };
+		4126FD201A70E9D000C24380 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4126FD1F1A70E9D000C24380 /* String.swift */; };
+		4126FD221A70E9D700C24380 /* Reflect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4126FD211A70E9D700C24380 /* Reflect.swift */; };
+		4126FD241A70FE7E00C24380 /* ReaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4126FD231A70FE7E00C24380 /* ReaderVC.swift */; };
 		412B4CDE1A6F916400606A14 /* RDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412B4CDD1A6F916400606A14 /* RDF.swift */; };
 		412B4CE01A6F9FF200606A14 /* MainTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412B4CDF1A6F9FF200606A14 /* MainTableVC.swift */; };
 		412BDC0B1A6E4CF000AD774D /* json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412BDC0A1A6E4CF000AD774D /* json.swift */; };
@@ -37,6 +42,11 @@
 		332974341A6FD8CC00DBC453 /* FolderTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderTableVC.swift; sourceTree = "<group>"; };
 		3378270D1A6FFC64005E723F /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		3378270E1A6FFC64005E723F /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		4126FD1B1A70E30B00C24380 /* scrapbook.rdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = scrapbook.rdf; sourceTree = "<group>"; };
+		4126FD1D1A70E5C800C24380 /* Dropbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dropbox.swift; sourceTree = "<group>"; };
+		4126FD1F1A70E9D000C24380 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		4126FD211A70E9D700C24380 /* Reflect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reflect.swift; sourceTree = "<group>"; };
+		4126FD231A70FE7E00C24380 /* ReaderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderVC.swift; sourceTree = "<group>"; };
 		412B4CDD1A6F916400606A14 /* RDF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDF.swift; sourceTree = "<group>"; };
 		412B4CDF1A6F9FF200606A14 /* MainTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableVC.swift; sourceTree = "<group>"; };
 		412BDC0A1A6E4CF000AD774D /* json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = json.swift; sourceTree = "<group>"; };
@@ -105,12 +115,17 @@
 		415468671A6E2B2200E4F255 /* ScrapBookIOS */ = {
 			isa = PBXGroup;
 			children = (
+				4126FD211A70E9D700C24380 /* Reflect.swift */,
+				4126FD1F1A70E9D000C24380 /* String.swift */,
+				4126FD1B1A70E30B00C24380 /* scrapbook.rdf */,
 				412BDC0A1A6E4CF000AD774D /* json.swift */,
 				4154686A1A6E2B2200E4F255 /* AppDelegate.swift */,
 				4154686C1A6E2B2200E4F255 /* ViewController.swift */,
+				4126FD1D1A70E5C800C24380 /* Dropbox.swift */,
 				412B4CDD1A6F916400606A14 /* RDF.swift */,
 				412B4CDF1A6F9FF200606A14 /* MainTableVC.swift */,
 				332974341A6FD8CC00DBC453 /* FolderTableVC.swift */,
+				4126FD231A70FE7E00C24380 /* ReaderVC.swift */,
 				4154686E1A6E2B2200E4F255 /* Main.storyboard */,
 				415468711A6E2B2200E4F255 /* Images.xcassets */,
 				415468731A6E2B2200E4F255 /* LaunchScreen.xib */,
@@ -240,6 +255,7 @@
 				415468701A6E2B2200E4F255 /* Main.storyboard in Resources */,
 				415468751A6E2B2200E4F255 /* LaunchScreen.xib in Resources */,
 				415468721A6E2B2200E4F255 /* Images.xcassets in Resources */,
+				4126FD1C1A70E30B00C24380 /* scrapbook.rdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,11 +307,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				412B4CDE1A6F916400606A14 /* RDF.swift in Sources */,
+				4126FD221A70E9D700C24380 /* Reflect.swift in Sources */,
 				4154686D1A6E2B2200E4F255 /* ViewController.swift in Sources */,
 				332974351A6FD8CC00DBC453 /* FolderTableVC.swift in Sources */,
+				4126FD201A70E9D000C24380 /* String.swift in Sources */,
+				4126FD241A70FE7E00C24380 /* ReaderVC.swift in Sources */,
 				4154686B1A6E2B2200E4F255 /* AppDelegate.swift in Sources */,
 				412B4CE01A6F9FF200606A14 /* MainTableVC.swift in Sources */,
 				3378270F1A6FFC64005E723F /* TableViewController.m in Sources */,
+				4126FD1E1A70E5C800C24380 /* Dropbox.swift in Sources */,
 				412BDC0B1A6E4CF000AD774D /* json.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

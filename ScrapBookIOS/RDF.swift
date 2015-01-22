@@ -88,4 +88,12 @@ class RDF:NSObject {
         return arr
     }
     
+    func getAllItemFolders()->[String]
+    {
+        var arr = [String]()
+        self.doc.enumerateElementsWithXPath("//RDF:Description[@NS1:type='']", usingBlock: { (e:ONOXMLElement!, idx:UInt, stop:UnsafeMutablePointer<ObjCBool>) -> Void in
+            arr.append(e["id"] as String)
+        })
+        return arr
+    }
 }

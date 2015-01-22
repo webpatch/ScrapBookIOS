@@ -29,6 +29,10 @@ class FolderTableVC:UITableViewController {
             self.navigationController?.pushViewController(v, animated: true)
         }else{
             println("hello file \(f.id)")
+            let b = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+            let vc = b.instantiateViewControllerWithIdentifier("ReaderVC") as ReaderVC
+            vc.id = f.id
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

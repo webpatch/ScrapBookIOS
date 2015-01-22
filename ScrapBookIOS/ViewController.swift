@@ -22,12 +22,9 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        getDataSubFolder()
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "ready", name: kGetDataSubFolderFinished, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "download", name: kStartDownload, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "initRs", name: RDF.RDF_INIT_COMPLETE, object: nil)
-        
-        RDF.sharedInstance()
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:UITableViewCell! = tableView.dequeueReusableCellWithIdentifier("TableCell") as? UITableViewCell
