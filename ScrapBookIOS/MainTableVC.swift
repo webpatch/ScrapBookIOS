@@ -14,26 +14,37 @@ class MainTableVC:FolderTableVC{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        NSTimer(timeInterval: 3, target: self, selector: "query", userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "query", userInfo: nil, repeats: true)
         RDF.sharedInstance().start{
             let folders = RDF.sharedInstance().getAllItemFolders()
             var ops = [NSOperation]()
             for folder in folders
             {
-                ops.append(Dropbox.sharedInstance().getFileMeta("/ScrapBook/data/\(folder)"))
-                let targetPath = self.docPath.URLByAppendingPathComponent("/ScrapBook/data/\(folder)")
+                let f = "/scrapbook/data/\(folder)".lowercaseString
+                ops.append(Dropbox.sharedInstance().getFileMeta(f))
+                let targetPath = self.docPath.URLByAppendingPathComponent(f)
                 NSFileManager.defaultManager().createDirectoryAtURL(targetPath, withIntermediateDirectories: true, attributes: nil, error: nil)
             }
             let s = AFURLConnectionOperation.batchOfRequestOperations(ops, progressBlock: { (numberOfFinishedOperations, totalNumberOfOperations) -> Void in
                 
             }, completionBlock: { (operations) -> Void in
-               println(Dropbox.sharedInstance().files)
-                Dropbox.sharedInstance().downloadFileToPath()
+//               println(Dropbox.sharedInstance().files)
+//                Dropbox.sharedInstance().downloadFileToPath()
             })
             NSOperationQueue().addOperations(s, waitUntilFinished: false)
            
            self.dataArr = RDF.sharedInstance().getFolderList("urn:scrapbook:root")
            self.tableView.reloadData()
         }
+        
+    }
+    
+    func query()
+    {
+        println("query")
+        Dropbox.sharedInstance().delta()
     }
   
 }

@@ -32,6 +32,7 @@ class FolderTableVC:UITableViewController {
             let b = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
             let vc = b.instantiateViewControllerWithIdentifier("ReaderVC") as ReaderVC
             vc.id = f.id
+            vc.title = f.title
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

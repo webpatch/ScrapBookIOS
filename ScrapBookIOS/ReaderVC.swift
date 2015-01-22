@@ -15,7 +15,7 @@ class ReaderVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let docPath = NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false, error: nil)!
-        let p = docPath.path?.stringByAppendingPathComponent("/ScrapBook/data/\(id)/index.html")
+        let p = docPath.path?.stringByAppendingPathComponent("/scrapbook/data/\(id)/index.html")
         var r = NSURLRequest(URL: NSURL(fileURLWithPath: p!)!)
         webView.loadRequest(r)
         // Do any additional setup after loading the view.

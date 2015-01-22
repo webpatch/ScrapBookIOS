@@ -11,6 +11,71 @@ import UIKit
 class Dropbox: NSObject {
     var files = [String]()
     
+    func delta()
+    {
+        var r = NSMutableURLRequest(URL: NSURL(string:"https://api.dropbox.com/1/delta")!)
+        r.addValue("Bearer Pug6-mtEkpIAAAAAAAAEBuyS-WWaUXlpG_VGHZn5EUzx9BJewqVuiOpIPfpXspi-", forHTTPHeaderField: "Authorization")
+        r.HTTPMethod = "POST"
+        
+        let cur = NSUserDefaults.standardUserDefaults().valueForKey("cursor") as? NSString ?? ""
+        let params = ["cursor":cur,"locale":"","path_prefix":"/scrapbook","include_media_info":false]
+        let rPost = AFHTTPRequestSerializer().requestBySerializingRequest(r, withParameters: params, error: nil)
+        let op = AFHTTPRequestOperation(request: rPost)
+        op.responseSerializer = AFHTTPResponseSerializer()
+        op.setCompletionBlockWithSuccess({ (operation:AFHTTPRequestOperation!, responseObj:AnyObject!) -> Void in
+            let json = JSON(data:responseObj as NSData)
+            let arr = json["entries"].asArray!
+            for i in arr
+            {
+                let a = i.asArray!
+//                println(a)
+                if let o = a[1].asNull?
+                {
+                    println("Delete ")
+                }else{
+                    if let j = a[1].asDictionary?
+                    {
+                        if j["is_dir"]!.asBool!{
+                            println("modify Folder ")
+                        }else{
+                            println("modify File ")
+                        }
+                    }
+                }
+            }
+//            println(json["entries"].asArray!)
+//            self.parseEntries(json["entries"].asArray!)
+//            println(NSString(data: responseObj as NSData, encoding: NSUTF8StringEncoding)!)
+            NSUserDefaults.standardUserDefaults().setObject(json["cursor"].asString!, forKey: "cursor")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }, failure: { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+            println(error)
+        })
+        op.start()
+    }
+    
+    private func parseEntries(arr:NSArray)
+    {
+        for obj in arr
+        {
+            let oArr = (obj as JSON).asArray! as NSArray
+            if oArr.lastObject! as NSObject == NSNull()
+            {
+                println("Delete \(oArr.firstObject)")
+            }else{
+                if let dic = oArr.lastObject as? JSON
+                {
+                    if dic["is_dir"].asBool!{
+                        println("modify Folder \(oArr.firstObject)")
+                    }else{
+                        println("modify File \(oArr.firstObject)")
+                    }
+                    
+                }
+            }
+        }
+    }
+    
     func downloadFileToPath()
     {
         var qs = [NSOperation]()
