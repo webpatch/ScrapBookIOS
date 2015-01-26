@@ -46,26 +46,28 @@ class RDF:NSObject {
     required override init()
     {
         super.init()
+        
     }
-    
     
     func start(complete:()->Void)
     {
         var r = NSMutableURLRequest(URL: NSURL(string:"https://api-content.dropbox.com/1/files/auto/ScrapBook/scrapbook.rdf")!)
+        r.timeoutInterval = 3
         r.addValue("Bearer Pug6-mtEkpIAAAAAAAAEBuyS-WWaUXlpG_VGHZn5EUzx9BJewqVuiOpIPfpXspi-", forHTTPHeaderField: "Authorization")
-        println("start")
-        let op = AFHTTPRequestOperation(request: r)
-        op.responseSerializer = AFHTTPResponseSerializer()
-        op.setCompletionBlockWithSuccess({ (operation:AFHTTPRequestOperation!, responseObj:AnyObject!) -> Void in
-            println("over")
-            let d = responseObj as NSData
-            self.doc = ONOXMLDocument(data: d, error: nil)
+        NSURLConnection.sendAsynchronousRequest(r, queue: NSOperationQueue()) { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
+            println(error)
+            if error != nil
+            {
+                let d =  NSData(contentsOfFile: Path.document.stringByAppendingPathComponent("scrapBook/scrapbook.rdf"))
+                println(Path.document.stringByAppendingPathComponent("scrapBook/scrapbook.rdf"))
+                self.doc = ONOXMLDocument(data: d, error: nil)
+            }else{
+                self.doc = ONOXMLDocument(data: data, error: nil)
+                let p = Path.document.stringByAppendingPathComponent("scrapBook/scrapbook.rdf")
+                data.writeToFile(p, atomically: true)
+            }
             complete()
-        }, failure: { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-                println(error)
-        })
-        
-        NSOperationQueue.mainQueue().addOperation(op)
+        }
     }
     
     func getFolderList(nodeName:String) -> [Folder]

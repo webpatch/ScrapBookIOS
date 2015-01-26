@@ -14,12 +14,16 @@
 		4126FD241A70FE7E00C24380 /* ReaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4126FD231A70FE7E00C24380 /* ReaderVC.swift */; };
 		412B4CDE1A6F916400606A14 /* RDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412B4CDD1A6F916400606A14 /* RDF.swift */; };
 		412B4CE01A6F9FF200606A14 /* MainTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412B4CDF1A6F9FF200606A14 /* MainTableVC.swift */; };
-		412BDC0B1A6E4CF000AD774D /* json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412BDC0A1A6E4CF000AD774D /* json.swift */; };
+		413930E01A75E27A0086E4C1 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413930DF1A75E27A0086E4C1 /* Dictionary.swift */; };
+		413930E21A75E7A00086E4C1 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413930E11A75E7A00086E4C1 /* SwiftyJSON.swift */; };
+		413930E41A75F0910086E4C1 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413930E31A75F0910086E4C1 /* Path.swift */; };
 		4154686B1A6E2B2200E4F255 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4154686A1A6E2B2200E4F255 /* AppDelegate.swift */; };
 		415468701A6E2B2200E4F255 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4154686E1A6E2B2200E4F255 /* Main.storyboard */; };
 		415468721A6E2B2200E4F255 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 415468711A6E2B2200E4F255 /* Images.xcassets */; };
 		415468751A6E2B2200E4F255 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 415468731A6E2B2200E4F255 /* LaunchScreen.xib */; };
 		415468811A6E2B2200E4F255 /* ScrapBookIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415468801A6E2B2200E4F255 /* ScrapBookIOSTests.swift */; };
+		41A68D531A7624710013665E /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A68D521A7624710013665E /* Downloader.swift */; };
+		41A68D551A76406E0013665E /* NetWorkServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A68D541A76406E0013665E /* NetWorkServer.swift */; };
 		F5BCBF05CCC0CDF28D51C529 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05ADB03A8E6A27046177DF38 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +47,9 @@
 		4126FD231A70FE7E00C24380 /* ReaderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderVC.swift; sourceTree = "<group>"; };
 		412B4CDD1A6F916400606A14 /* RDF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDF.swift; sourceTree = "<group>"; };
 		412B4CDF1A6F9FF200606A14 /* MainTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableVC.swift; sourceTree = "<group>"; };
-		412BDC0A1A6E4CF000AD774D /* json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = json.swift; sourceTree = "<group>"; };
+		413930DF1A75E27A0086E4C1 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		413930E11A75E7A00086E4C1 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		413930E31A75F0910086E4C1 /* Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		415468651A6E2B2200E4F255 /* ScrapBookIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrapBookIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		415468691A6E2B2200E4F255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4154686A1A6E2B2200E4F255 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +60,8 @@
 		4154687F1A6E2B2200E4F255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		415468801A6E2B2200E4F255 /* ScrapBookIOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapBookIOSTests.swift; sourceTree = "<group>"; };
 		4154688A1A6E412100E4F255 /* Bridge-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
+		41A68D521A7624710013665E /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		41A68D541A76406E0013665E /* NetWorkServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkServer.swift; sourceTree = "<group>"; };
 		7F5EA4CB1DF08E5DCACC4E69 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +93,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		413930DE1A75E2620086E4C1 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				4126FD211A70E9D700C24380 /* Reflect.swift */,
+				4126FD1F1A70E9D000C24380 /* String.swift */,
+				413930DF1A75E27A0086E4C1 /* Dictionary.swift */,
+			);
+			name = extension;
+			sourceTree = "<group>";
+		};
 		4154685C1A6E2B2200E4F255 = {
 			isa = PBXGroup;
 			children = (
@@ -108,11 +126,13 @@
 		415468671A6E2B2200E4F255 /* ScrapBookIOS */ = {
 			isa = PBXGroup;
 			children = (
-				4126FD211A70E9D700C24380 /* Reflect.swift */,
-				4126FD1F1A70E9D000C24380 /* String.swift */,
-				412BDC0A1A6E4CF000AD774D /* json.swift */,
+				41A68D541A76406E0013665E /* NetWorkServer.swift */,
+				413930E31A75F0910086E4C1 /* Path.swift */,
+				413930E11A75E7A00086E4C1 /* SwiftyJSON.swift */,
+				413930DE1A75E2620086E4C1 /* extension */,
 				4154686A1A6E2B2200E4F255 /* AppDelegate.swift */,
 				4126FD1D1A70E5C800C24380 /* Dropbox.swift */,
+				41A68D521A7624710013665E /* Downloader.swift */,
 				412B4CDD1A6F916400606A14 /* RDF.swift */,
 				412B4CDF1A6F9FF200606A14 /* MainTableVC.swift */,
 				332974341A6FD8CC00DBC453 /* FolderTableVC.swift */,
@@ -295,14 +315,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				412B4CDE1A6F916400606A14 /* RDF.swift in Sources */,
+				41A68D551A76406E0013665E /* NetWorkServer.swift in Sources */,
+				413930E41A75F0910086E4C1 /* Path.swift in Sources */,
+				41A68D531A7624710013665E /* Downloader.swift in Sources */,
+				413930E01A75E27A0086E4C1 /* Dictionary.swift in Sources */,
 				4126FD221A70E9D700C24380 /* Reflect.swift in Sources */,
+				413930E21A75E7A00086E4C1 /* SwiftyJSON.swift in Sources */,
 				332974351A6FD8CC00DBC453 /* FolderTableVC.swift in Sources */,
 				4126FD201A70E9D000C24380 /* String.swift in Sources */,
 				4126FD241A70FE7E00C24380 /* ReaderVC.swift in Sources */,
 				4154686B1A6E2B2200E4F255 /* AppDelegate.swift in Sources */,
 				412B4CE01A6F9FF200606A14 /* MainTableVC.swift in Sources */,
 				4126FD1E1A70E5C800C24380 /* Dropbox.swift in Sources */,
-				412BDC0B1A6E4CF000AD774D /* json.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

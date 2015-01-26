@@ -10,68 +10,52 @@ import UIKit
 
 class Dropbox: NSObject {
     var files = [String]()
-    
+    var isSyncing = false
     func delta()
     {
+        if isSyncing { return }
+        
+        isSyncing = true
+        
         var r = NSMutableURLRequest(URL: NSURL(string:"https://api.dropbox.com/1/delta")!)
         r.addValue("Bearer Pug6-mtEkpIAAAAAAAAEBuyS-WWaUXlpG_VGHZn5EUzx9BJewqVuiOpIPfpXspi-", forHTTPHeaderField: "Authorization")
         r.HTTPMethod = "POST"
-        
         let cur = NSUserDefaults.standardUserDefaults().valueForKey("cursor") as? NSString ?? ""
         let params = ["cursor":cur,"locale":"","path_prefix":"/scrapbook","include_media_info":false]
-        let rPost = AFHTTPRequestSerializer().requestBySerializingRequest(r, withParameters: params, error: nil)
-        let op = AFHTTPRequestOperation(request: rPost)
-        op.responseSerializer = AFHTTPResponseSerializer()
-        op.setCompletionBlockWithSuccess({ (operation:AFHTTPRequestOperation!, responseObj:AnyObject!) -> Void in
-            let json = JSON(data:responseObj as NSData)
-            let arr = json["entries"].asArray!
-            for i in arr
+        r.HTTPBody = params.htmlParams.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        
+        NSURLConnection.sendAsynchronousRequest(r, queue: NSOperationQueue()) { (response:NSURLResponse!, data:NSData!, e:NSError!) -> Void in
+            let json = JSON(data:data)
+            
+            let fm = NSFileManager.defaultManager()
+            
+            for i in json["entries"].arrayValue
             {
-                let a = i.asArray!
-//                println(a)
-                if let o = a[1].asNull?
+                let arr = i.arrayValue
+                let path = Path.document.stringByAppendingPathComponent(arr[0].stringValue)
+                // 删除
+                if let o = arr[1].null
                 {
                     println("Delete ")
+                    fm.removeItemAtPath(path, error: nil)
                 }else{
-                    if let j = a[1].asDictionary?
+                    if let meta = arr[1].dictionary
                     {
-                        if j["is_dir"]!.asBool!{
+                        if meta["is_dir"]!.boolValue{
                             println("modify Folder ")
+                            fm.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil, error: nil)
                         }else{
+                            Downloader.sharedInstance().appendDownloadTask(arr[0].stringValue)
                             println("modify File ")
                         }
                     }
                 }
             }
-//            println(json["entries"].asArray!)
-//            self.parseEntries(json["entries"].asArray!)
-//            println(NSString(data: responseObj as NSData, encoding: NSUTF8StringEncoding)!)
-            NSUserDefaults.standardUserDefaults().setObject(json["cursor"].asString!, forKey: "cursor")
-            NSUserDefaults.standardUserDefaults().synchronize()
-        }, failure: { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-            println(error)
-        })
-        op.start()
-    }
-    
-    private func parseEntries(arr:NSArray)
-    {
-        for obj in arr
-        {
-            let oArr = (obj as JSON).asArray! as NSArray
-            if oArr.lastObject! as NSObject == NSNull()
-            {
-                println("Delete \(oArr.firstObject)")
-            }else{
-                if let dic = oArr.lastObject as? JSON
-                {
-                    if dic["is_dir"].asBool!{
-                        println("modify Folder \(oArr.firstObject)")
-                    }else{
-                        println("modify File \(oArr.firstObject)")
-                    }
-                    
-                }
+            
+            Downloader.sharedInstance().start{
+                NSUserDefaults.standardUserDefaults().setObject(json["cursor"].stringValue, forKey: "cursor")
+                NSUserDefaults.standardUserDefaults().synchronize()
+                self.isSyncing = false
             }
         }
     }
@@ -119,9 +103,9 @@ class Dropbox: NSObject {
         op.setCompletionBlockWithSuccess({ (operation:AFHTTPRequestOperation!, responseObj:AnyObject!) -> Void in
             let json = JSON(data:responseObj as NSData)
 //            println(NSString(data: (responseObj as NSData), encoding: NSUTF8StringEncoding))
-            for content in json["contents"].asArray!
+            for content in json["contents"].arrayValue
             {
-               self.files.append(content["path"].asString!)
+               self.files.append(content["path"].stringValue)
             }
         }, failure: { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
             println(error)
