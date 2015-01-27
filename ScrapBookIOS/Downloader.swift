@@ -14,7 +14,9 @@ class Downloader:NSObject {
     func start(completeBlock:()->Void)
     {
         let ops = AFURLConnectionOperation.batchOfRequestOperations(operations, progressBlock: { (numberOfFinishedOperations, totalNumberOfOperations) -> Void in
-            println("\(numberOfFinishedOperations) / \(totalNumberOfOperations)")
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                NSNotificationCenter.defaultCenter().postNotificationName("Fire", object: "\(numberOfFinishedOperations) / \(totalNumberOfOperations)")
+            })
         }) { (operations) -> Void in
             println("Download Complete!")
             completeBlock()
@@ -25,7 +27,7 @@ class Downloader:NSObject {
     
     func appendDownloadTask(fileLink:String)
     {
-        let targetPath = Path.document.stringByAppendingPathComponent(fileLink)
+        let targetPath = Path.document.stringByAppendingPathComponent(fileLink.lowercaseString)
         let url = ("https://api-content.dropbox.com/1/files/auto\(fileLink)" as NSString).stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         var r = NSMutableURLRequest(URL: NSURL(string:url)!)
         r.addValue("Bearer Pug6-mtEkpIAAAAAAAAEBuyS-WWaUXlpG_VGHZn5EUzx9BJewqVuiOpIPfpXspi-", forHTTPHeaderField: "Authorization")

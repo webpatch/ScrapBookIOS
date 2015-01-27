@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        NetWorkServer.sharedInstance()
         // Override point for customization after application launch.
 //        RDF.sharedInstance()
         return true

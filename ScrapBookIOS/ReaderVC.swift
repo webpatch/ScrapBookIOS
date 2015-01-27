@@ -14,11 +14,9 @@ class ReaderVC: UIViewController {
     var id:String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        let docPath = NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false, error: nil)!
-        let p = docPath.path?.stringByAppendingPathComponent("/scrapbook/data/\(id)/index.html")
-        var r = NSURLRequest(URL: NSURL(fileURLWithPath: p!)!)
+        let p = Path.document.stringByAppendingPathComponent("/scrapbook/data/\(id)/index.html")
+        var r = NSURLRequest(URL: NSURL(fileURLWithPath: p)!)
         webView.loadRequest(r)
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

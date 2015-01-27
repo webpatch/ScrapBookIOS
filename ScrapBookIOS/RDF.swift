@@ -29,6 +29,7 @@ extension Folder:Printable
 class RDF:NSObject {
     class var RDF_INIT_COMPLETE:String {return "RDF_INIT_COMPLETE"}
     var doc:ONOXMLDocument!
+    let rdfPath = Path.document.stringByAppendingPathComponent("scrapbook/scrapbook.rdf")
     
     struct Static {
         static var instance:RDF? = nil
@@ -42,31 +43,28 @@ class RDF:NSObject {
         return Static.instance!
     }
     
-    
     required override init()
     {
         super.init()
-        
     }
     
     func start(complete:()->Void)
     {
         var r = NSMutableURLRequest(URL: NSURL(string:"https://api-content.dropbox.com/1/files/auto/ScrapBook/scrapbook.rdf")!)
-        r.timeoutInterval = 3
         r.addValue("Bearer Pug6-mtEkpIAAAAAAAAEBuyS-WWaUXlpG_VGHZn5EUzx9BJewqVuiOpIPfpXspi-", forHTTPHeaderField: "Authorization")
         NSURLConnection.sendAsynchronousRequest(r, queue: NSOperationQueue()) { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
-            println(error)
             if error != nil
             {
-                let d =  NSData(contentsOfFile: Path.document.stringByAppendingPathComponent("scrapBook/scrapbook.rdf"))
-                println(Path.document.stringByAppendingPathComponent("scrapBook/scrapbook.rdf"))
+                let d =  NSData(contentsOfFile: self.rdfPath)!
                 self.doc = ONOXMLDocument(data: d, error: nil)
             }else{
                 self.doc = ONOXMLDocument(data: data, error: nil)
-                let p = Path.document.stringByAppendingPathComponent("scrapBook/scrapbook.rdf")
-                data.writeToFile(p, atomically: true)
+                data.writeToFile(self.rdfPath, atomically: true)
             }
-            complete()
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                complete()
+            })
         }
     }
     

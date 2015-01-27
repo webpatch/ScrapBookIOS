@@ -11,6 +11,13 @@ import UIKit
 class Dropbox: NSObject {
     var files = [String]()
     var isSyncing = false
+    
+    func reset()
+    {
+        isSyncing = false
+        NSUserDefaults.standardUserDefaults().setValue("", forKey: "cursor")
+    }
+    
     func delta()
     {
         if isSyncing { return }
@@ -25,6 +32,7 @@ class Dropbox: NSObject {
         r.HTTPBody = params.htmlParams.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
         
         NSURLConnection.sendAsynchronousRequest(r, queue: NSOperationQueue()) { (response:NSURLResponse!, data:NSData!, e:NSError!) -> Void in
+            if e != nil { return }
             let json = JSON(data:data)
             
             let fm = NSFileManager.defaultManager()
@@ -60,58 +68,58 @@ class Dropbox: NSObject {
         }
     }
     
-    func downloadFileToPath()
-    {
-        var qs = [NSOperation]()
-        let docPath = NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false, error: nil)!
-        for file in files
-        {
-            let targetPath = docPath.URLByAppendingPathComponent(file)
-            
-            var r = NSMutableURLRequest(URL: NSURL(string:"https://api-content.dropbox.com/1/files/auto\(file)")!)
-            r.addValue("Bearer Pug6-mtEkpIAAAAAAAAEBuyS-WWaUXlpG_VGHZn5EUzx9BJewqVuiOpIPfpXspi-", forHTTPHeaderField: "Authorization")
-
-            let op = AFHTTPRequestOperation(request: r)
-            op.responseSerializer = AFHTTPResponseSerializer()
-            op.setCompletionBlockWithSuccess({ (operation:AFHTTPRequestOperation!, responseObj:AnyObject!) -> Void in
-                let d = responseObj as NSData
-                println(targetPath)
-                d.writeToURL(targetPath, atomically: true)
-            }, failure: { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-                println(error)
-            })
-
-            qs.append(op)
-        }
-        let ops = AFURLConnectionOperation.batchOfRequestOperations(qs, progressBlock: { (numberOfFinishedOperations, totalNumberOfOperations) -> Void in
-            println("\(numberOfFinishedOperations) / \(totalNumberOfOperations)")
-        }) { (operations) -> Void in
-            println("Download Complete!")
-        }
-        
-        NSOperationQueue().addOperations(ops, waitUntilFinished: false)
-    }
-    
-    
-    func getFileMeta(path:String)->AFHTTPRequestOperation
-    {
-        var r = NSMutableURLRequest(URL: NSURL(string:"https://api.dropbox.com/1/metadata/auto/\(path)")!)
-        r.addValue("Bearer Pug6-mtEkpIAAAAAAAAEBuyS-WWaUXlpG_VGHZn5EUzx9BJewqVuiOpIPfpXspi-", forHTTPHeaderField: "Authorization")
-        
-        let op = AFHTTPRequestOperation(request: r)
-        op.responseSerializer = AFHTTPResponseSerializer()
-        op.setCompletionBlockWithSuccess({ (operation:AFHTTPRequestOperation!, responseObj:AnyObject!) -> Void in
-            let json = JSON(data:responseObj as NSData)
-//            println(NSString(data: (responseObj as NSData), encoding: NSUTF8StringEncoding))
-            for content in json["contents"].arrayValue
-            {
-               self.files.append(content["path"].stringValue)
-            }
-        }, failure: { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-            println(error)
-        })
-        return op
-    }
+//    func downloadFileToPath()
+//    {
+//        var qs = [NSOperation]()
+//        let docPath = NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false, error: nil)!
+//        for file in files
+//        {
+//            let targetPath = docPath.URLByAppendingPathComponent(file)
+//            
+//            var r = NSMutableURLRequest(URL: NSURL(string:"https://api-content.dropbox.com/1/files/auto\(file)")!)
+//            r.addValue("Bearer Pug6-mtEkpIAAAAAAAAEBuyS-WWaUXlpG_VGHZn5EUzx9BJewqVuiOpIPfpXspi-", forHTTPHeaderField: "Authorization")
+//
+//            let op = AFHTTPRequestOperation(request: r)
+//            op.responseSerializer = AFHTTPResponseSerializer()
+//            op.setCompletionBlockWithSuccess({ (operation:AFHTTPRequestOperation!, responseObj:AnyObject!) -> Void in
+//                let d = responseObj as NSData
+//                println(targetPath)
+//                d.writeToURL(targetPath, atomically: true)
+//            }, failure: { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+//                println(error)
+//            })
+//
+//            qs.append(op)
+//        }
+//        let ops = AFURLConnectionOperation.batchOfRequestOperations(qs, progressBlock: { (numberOfFinishedOperations, totalNumberOfOperations) -> Void in
+//            println("\(numberOfFinishedOperations) / \(totalNumberOfOperations)")
+//        }) { (operations) -> Void in
+//            println("Download Complete!")
+//        }
+//        
+//        NSOperationQueue().addOperations(ops, waitUntilFinished: false)
+//    }
+//    
+//    
+//    func getFileMeta(path:String)->AFHTTPRequestOperation
+//    {
+//        var r = NSMutableURLRequest(URL: NSURL(string:"https://api.dropbox.com/1/metadata/auto/\(path)")!)
+//        r.addValue("Bearer Pug6-mtEkpIAAAAAAAAEBuyS-WWaUXlpG_VGHZn5EUzx9BJewqVuiOpIPfpXspi-", forHTTPHeaderField: "Authorization")
+//        
+//        let op = AFHTTPRequestOperation(request: r)
+//        op.responseSerializer = AFHTTPResponseSerializer()
+//        op.setCompletionBlockWithSuccess({ (operation:AFHTTPRequestOperation!, responseObj:AnyObject!) -> Void in
+//            let json = JSON(data:responseObj as NSData)
+////            println(NSString(data: (responseObj as NSData), encoding: NSUTF8StringEncoding))
+//            for content in json["contents"].arrayValue
+//            {
+//               self.files.append(content["path"].stringValue)
+//            }
+//        }, failure: { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+//            println(error)
+//        })
+//        return op
+//    }
     
     struct Static {
         static var instance:Dropbox? = nil

@@ -23,7 +23,6 @@
 		415468751A6E2B2200E4F255 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 415468731A6E2B2200E4F255 /* LaunchScreen.xib */; };
 		415468811A6E2B2200E4F255 /* ScrapBookIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415468801A6E2B2200E4F255 /* ScrapBookIOSTests.swift */; };
 		41A68D531A7624710013665E /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A68D521A7624710013665E /* Downloader.swift */; };
-		41A68D551A76406E0013665E /* NetWorkServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A68D541A76406E0013665E /* NetWorkServer.swift */; };
 		F5BCBF05CCC0CDF28D51C529 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05ADB03A8E6A27046177DF38 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +48,7 @@
 		412B4CDF1A6F9FF200606A14 /* MainTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableVC.swift; sourceTree = "<group>"; };
 		413930DF1A75E27A0086E4C1 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		413930E11A75E7A00086E4C1 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		413930E31A75F0910086E4C1 /* Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
+		413930E31A75F0910086E4C1 /* Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Path.swift; path = ScrapBookIOS/Path.swift; sourceTree = "<group>"; };
 		415468651A6E2B2200E4F255 /* ScrapBookIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrapBookIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		415468691A6E2B2200E4F255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4154686A1A6E2B2200E4F255 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,7 +60,6 @@
 		415468801A6E2B2200E4F255 /* ScrapBookIOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapBookIOSTests.swift; sourceTree = "<group>"; };
 		4154688A1A6E412100E4F255 /* Bridge-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
 		41A68D521A7624710013665E /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
-		41A68D541A76406E0013665E /* NetWorkServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkServer.swift; sourceTree = "<group>"; };
 		7F5EA4CB1DF08E5DCACC4E69 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +104,7 @@
 		4154685C1A6E2B2200E4F255 = {
 			isa = PBXGroup;
 			children = (
+				41BB2E7C1A77838000AFF732 /* helper */,
 				415468671A6E2B2200E4F255 /* ScrapBookIOS */,
 				4154687D1A6E2B2200E4F255 /* ScrapBookIOSTests */,
 				415468661A6E2B2200E4F255 /* Products */,
@@ -126,17 +125,11 @@
 		415468671A6E2B2200E4F255 /* ScrapBookIOS */ = {
 			isa = PBXGroup;
 			children = (
-				41A68D541A76406E0013665E /* NetWorkServer.swift */,
-				413930E31A75F0910086E4C1 /* Path.swift */,
-				413930E11A75E7A00086E4C1 /* SwiftyJSON.swift */,
+				41BB2E7B1A7782E100AFF732 /* server */,
+				41BB2E7A1A7782B600AFF732 /* lib */,
+				41BB2E791A7782A300AFF732 /* ViewController */,
 				413930DE1A75E2620086E4C1 /* extension */,
 				4154686A1A6E2B2200E4F255 /* AppDelegate.swift */,
-				4126FD1D1A70E5C800C24380 /* Dropbox.swift */,
-				41A68D521A7624710013665E /* Downloader.swift */,
-				412B4CDD1A6F916400606A14 /* RDF.swift */,
-				412B4CDF1A6F9FF200606A14 /* MainTableVC.swift */,
-				332974341A6FD8CC00DBC453 /* FolderTableVC.swift */,
-				4126FD231A70FE7E00C24380 /* ReaderVC.swift */,
 				4154686E1A6E2B2200E4F255 /* Main.storyboard */,
 				415468711A6E2B2200E4F255 /* Images.xcassets */,
 				415468731A6E2B2200E4F255 /* LaunchScreen.xib */,
@@ -169,6 +162,42 @@
 				4154687F1A6E2B2200E4F255 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		41BB2E791A7782A300AFF732 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4126FD231A70FE7E00C24380 /* ReaderVC.swift */,
+				412B4CDF1A6F9FF200606A14 /* MainTableVC.swift */,
+				332974341A6FD8CC00DBC453 /* FolderTableVC.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		41BB2E7A1A7782B600AFF732 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				413930E11A75E7A00086E4C1 /* SwiftyJSON.swift */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
+		41BB2E7B1A7782E100AFF732 /* server */ = {
+			isa = PBXGroup;
+			children = (
+				4126FD1D1A70E5C800C24380 /* Dropbox.swift */,
+				41A68D521A7624710013665E /* Downloader.swift */,
+				412B4CDD1A6F916400606A14 /* RDF.swift */,
+			);
+			name = server;
+			sourceTree = "<group>";
+		};
+		41BB2E7C1A77838000AFF732 /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				413930E31A75F0910086E4C1 /* Path.swift */,
+			);
+			name = helper;
 			sourceTree = "<group>";
 		};
 		7B5CDCFA7A252CBFBFDEC5E9 /* Frameworks */ = {
@@ -315,7 +344,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				412B4CDE1A6F916400606A14 /* RDF.swift in Sources */,
-				41A68D551A76406E0013665E /* NetWorkServer.swift in Sources */,
 				413930E41A75F0910086E4C1 /* Path.swift in Sources */,
 				41A68D531A7624710013665E /* Downloader.swift in Sources */,
 				413930E01A75E27A0086E4C1 /* Dictionary.swift in Sources */,
@@ -452,6 +480,7 @@
 			baseConfigurationReference = 7F5EA4CB1DF08E5DCACC4E69 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -469,6 +498,7 @@
 			baseConfigurationReference = 1FC7DC2E25DEA01BE523ACD9 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
