@@ -23,6 +23,7 @@
 		415468751A6E2B2200E4F255 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 415468731A6E2B2200E4F255 /* LaunchScreen.xib */; };
 		415468811A6E2B2200E4F255 /* ScrapBookIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415468801A6E2B2200E4F255 /* ScrapBookIOSTests.swift */; };
 		41A68D531A7624710013665E /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A68D521A7624710013665E /* Downloader.swift */; };
+		41D8EA231A78BCA40096080C /* LinkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8EA221A78BCA40096080C /* LinkVC.swift */; };
 		F5BCBF05CCC0CDF28D51C529 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05ADB03A8E6A27046177DF38 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		415468801A6E2B2200E4F255 /* ScrapBookIOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapBookIOSTests.swift; sourceTree = "<group>"; };
 		4154688A1A6E412100E4F255 /* Bridge-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
 		41A68D521A7624710013665E /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		41D8EA221A78BCA40096080C /* LinkVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkVC.swift; sourceTree = "<group>"; };
 		7F5EA4CB1DF08E5DCACC4E69 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,6 +172,7 @@
 				4126FD231A70FE7E00C24380 /* ReaderVC.swift */,
 				412B4CDF1A6F9FF200606A14 /* MainTableVC.swift */,
 				332974341A6FD8CC00DBC453 /* FolderTableVC.swift */,
+				41D8EA221A78BCA40096080C /* LinkVC.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				413930E21A75E7A00086E4C1 /* SwiftyJSON.swift in Sources */,
 				332974351A6FD8CC00DBC453 /* FolderTableVC.swift in Sources */,
 				4126FD201A70E9D000C24380 /* String.swift in Sources */,
+				41D8EA231A78BCA40096080C /* LinkVC.swift in Sources */,
 				4126FD241A70FE7E00C24380 /* ReaderVC.swift in Sources */,
 				4154686B1A6E2B2200E4F255 /* AppDelegate.swift in Sources */,
 				412B4CE01A6F9FF200606A14 /* MainTableVC.swift in Sources */,

@@ -5,6 +5,25 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
+        <!--Link-->
+        <scene sceneID="OYI-A0-g4l">
+            <objects>
+                <viewController id="udp-xf-Kk7" customClass="LinkVC" customModule="ScrapBookIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3PP-Fs-Q4y"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Q3-yp-pkh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="foh-wd-ZGZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Link" id="JLz-b8-jCN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QcC-c4-dwT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1148" y="-712"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="rmN-vD-oVy">
             <objects>
@@ -14,12 +33,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="6iU-JN-Yck" kind="relationship" relationship="rootViewController" id="Ali-lZ-fL7"/>
+                        <segue destination="udp-xf-Kk7" kind="relationship" relationship="rootViewController" id="h8h-W2-WwT"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C1O-w1-Vea" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="392" y="73"/>
+            <point key="canvasLocation" x="290" y="-11"/>
         </scene>
         <!--ReaderVC-->
         <scene sceneID="GS6-Po-zMx">
