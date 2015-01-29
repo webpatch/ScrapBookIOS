@@ -50,8 +50,7 @@ class RDF:NSObject {
     
     func start(complete:()->Void)
     {
-        var r = NSMutableURLRequest(URL: NSURL(string:"https://api-content.dropbox.com/1/files/auto/ScrapBook/scrapbook.rdf")!)
-        r.addValue("Bearer Pug6-mtEkpIAAAAAAAAEBuyS-WWaUXlpG_VGHZn5EUzx9BJewqVuiOpIPfpXspi-", forHTTPHeaderField: "Authorization")
+       var r = SafeURLRequest(path: "https://api-content.dropbox.com/1/files/auto/ScrapBook/scrapbook.rdf", token: Dropbox.sharedInstance().token)
         NSURLConnection.sendAsynchronousRequest(r, queue: NSOperationQueue()) { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
             if error != nil
             {

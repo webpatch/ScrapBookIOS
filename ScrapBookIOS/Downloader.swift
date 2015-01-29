@@ -25,13 +25,10 @@ class Downloader:NSObject {
     }
     
     
-    func appendDownloadTask(fileLink:String)
+    func appendDownloadTask(fileLink:String,token:String)
     {
         let targetPath = Path.document.stringByAppendingPathComponent(fileLink.lowercaseString)
-        let url = ("https://api-content.dropbox.com/1/files/auto\(fileLink)" as NSString).stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
-        var r = NSMutableURLRequest(URL: NSURL(string:url)!)
-        r.addValue("Bearer Pug6-mtEkpIAAAAAAAAEBuyS-WWaUXlpG_VGHZn5EUzx9BJewqVuiOpIPfpXspi-", forHTTPHeaderField: "Authorization")
-        
+        var r = SafeURLRequest(path: "https://api-content.dropbox.com/1/files/auto\(fileLink)", token: token)
         let op = AFHTTPRequestOperation(request: r)
         op.responseSerializer = AFHTTPResponseSerializer()
         op.setCompletionBlockWithSuccess({ (operation:AFHTTPRequestOperation!, responseObj:AnyObject!) -> Void in

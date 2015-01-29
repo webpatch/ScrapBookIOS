@@ -18,3 +18,15 @@ extension Dictionary
         return str.remove(str.length-1, 1)
     }
 }
+
+extension NSDictionary
+{
+    var htmlParams:String
+        {
+            var str = ""
+            for (k,v) in self{
+                str += "\(k)=\(v)&"
+            }
+            return str.remove(str.length-1, 1)
+    }
+}

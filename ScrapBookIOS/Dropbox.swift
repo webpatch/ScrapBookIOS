@@ -9,27 +9,54 @@
 import UIKit
 
 class Dropbox: NSObject {
-    var files = [String]()
-    var isSyncing = false
+    private var _cursor:String?
+    var cursor:String{
+        set{
+            _cursor = newValue
+           NSUserDefaults.standardUserDefaults().setValue(newValue, forKey: "cursor")
+        }
+        get{
+            if(_cursor == nil){
+                _cursor = NSUserDefaults.standardUserDefaults().valueForKey("cursor") as? NSString ?? ""
+            }
+           return _cursor!
+        }
+    }
+    
+    private var _token:String?
+    var token:String{
+        set{
+            _token = newValue
+            NSUserDefaults.standardUserDefaults().setValue(newValue, forKey: "token")
+        }
+        get{
+            if(_token == nil){
+                _token = NSUserDefaults.standardUserDefaults().valueForKey("token") as? NSString ?? ""
+            }
+            return _token!
+        }
+    }
+    
+    var  isSyncing:Bool{
+        return _isSyncing
+    }
+    private var _isSyncing = false
     
     func reset()
     {
-        isSyncing = false
-        NSUserDefaults.standardUserDefaults().setValue("", forKey: "cursor")
+        _isSyncing = false
+        cursor = ""
     }
     
     func delta()
     {
-        if isSyncing { return }
+        if _isSyncing { return }
         
-        isSyncing = true
+        _isSyncing = true
         
-        var r = NSMutableURLRequest(URL: NSURL(string:"https://api.dropbox.com/1/delta")!)
-        r.addValue("Bearer Pug6-mtEkpIAAAAAAAAEBuyS-WWaUXlpG_VGHZn5EUzx9BJewqVuiOpIPfpXspi-", forHTTPHeaderField: "Authorization")
+        var r = SafeURLRequest(path: "https://api.dropbox.com/1/delta", token: token)
         r.HTTPMethod = "POST"
-        let cur = NSUserDefaults.standardUserDefaults().valueForKey("cursor") as? NSString ?? ""
-        let params = ["cursor":cur,"locale":"","path_prefix":"/scrapbook","include_media_info":false]
-        r.HTTPBody = params.htmlParams.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        r.HTTPBodyDict = ["cursor":cursor,"locale":"","path_prefix":"/scrapbook","include_media_info":false]
         
         NSURLConnection.sendAsynchronousRequest(r, queue: NSOperationQueue()) { (response:NSURLResponse!, data:NSData!, e:NSError!) -> Void in
             if e != nil { return }
@@ -53,7 +80,7 @@ class Dropbox: NSObject {
                             println("modify Folder ")
                             fm.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil, error: nil)
                         }else{
-                            Downloader.sharedInstance().appendDownloadTask(arr[0].stringValue)
+                            Downloader.sharedInstance().appendDownloadTask(arr[0].stringValue,token: self.token)
                             println("modify File ")
                         }
                     }
@@ -61,9 +88,8 @@ class Dropbox: NSObject {
             }
             
             Downloader.sharedInstance().start{
-                NSUserDefaults.standardUserDefaults().setObject(json["cursor"].stringValue, forKey: "cursor")
-                NSUserDefaults.standardUserDefaults().synchronize()
-                self.isSyncing = false
+                self.cursor = json["cursor"].stringValue
+                self._isSyncing = false
             }
         }
     }

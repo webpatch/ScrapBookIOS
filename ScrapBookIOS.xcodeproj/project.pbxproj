@@ -17,6 +17,9 @@
 		413930E01A75E27A0086E4C1 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413930DF1A75E27A0086E4C1 /* Dictionary.swift */; };
 		413930E21A75E7A00086E4C1 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413930E11A75E7A00086E4C1 /* SwiftyJSON.swift */; };
 		413930E41A75F0910086E4C1 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413930E31A75F0910086E4C1 /* Path.swift */; };
+		414FE03A1A7A1A2600E5A268 /* MainNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414FE0391A7A1A2600E5A268 /* MainNav.swift */; };
+		414FE03C1A7A1DCE00E5A268 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414FE03B1A7A1DCE00E5A268 /* Config.swift */; };
+		414FE03F1A7A2B4800E5A268 /* SafeURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414FE03E1A7A2B4800E5A268 /* SafeURLRequest.swift */; };
 		4154686B1A6E2B2200E4F255 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4154686A1A6E2B2200E4F255 /* AppDelegate.swift */; };
 		415468701A6E2B2200E4F255 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4154686E1A6E2B2200E4F255 /* Main.storyboard */; };
 		415468721A6E2B2200E4F255 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 415468711A6E2B2200E4F255 /* Images.xcassets */; };
@@ -50,6 +53,9 @@
 		413930DF1A75E27A0086E4C1 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		413930E11A75E7A00086E4C1 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		413930E31A75F0910086E4C1 /* Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Path.swift; path = ScrapBookIOS/Path.swift; sourceTree = "<group>"; };
+		414FE0391A7A1A2600E5A268 /* MainNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNav.swift; sourceTree = "<group>"; };
+		414FE03B1A7A1DCE00E5A268 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		414FE03E1A7A2B4800E5A268 /* SafeURLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeURLRequest.swift; sourceTree = "<group>"; };
 		415468651A6E2B2200E4F255 /* ScrapBookIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrapBookIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		415468691A6E2B2200E4F255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4154686A1A6E2B2200E4F255 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +109,14 @@
 			name = extension;
 			sourceTree = "<group>";
 		};
+		414FE03D1A7A1DD500E5A268 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				414FE03B1A7A1DCE00E5A268 /* Config.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		4154685C1A6E2B2200E4F255 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +141,7 @@
 		415468671A6E2B2200E4F255 /* ScrapBookIOS */ = {
 			isa = PBXGroup;
 			children = (
+				414FE03D1A7A1DD500E5A268 /* model */,
 				41BB2E7B1A7782E100AFF732 /* server */,
 				41BB2E7A1A7782B600AFF732 /* lib */,
 				41BB2E791A7782A300AFF732 /* ViewController */,
@@ -173,6 +188,7 @@
 				412B4CDF1A6F9FF200606A14 /* MainTableVC.swift */,
 				332974341A6FD8CC00DBC453 /* FolderTableVC.swift */,
 				41D8EA221A78BCA40096080C /* LinkVC.swift */,
+				414FE0391A7A1A2600E5A268 /* MainNav.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -191,6 +207,7 @@
 				4126FD1D1A70E5C800C24380 /* Dropbox.swift */,
 				41A68D521A7624710013665E /* Downloader.swift */,
 				412B4CDD1A6F916400606A14 /* RDF.swift */,
+				414FE03E1A7A2B4800E5A268 /* SafeURLRequest.swift */,
 			);
 			name = server;
 			sourceTree = "<group>";
@@ -348,12 +365,15 @@
 			files = (
 				412B4CDE1A6F916400606A14 /* RDF.swift in Sources */,
 				413930E41A75F0910086E4C1 /* Path.swift in Sources */,
+				414FE03C1A7A1DCE00E5A268 /* Config.swift in Sources */,
 				41A68D531A7624710013665E /* Downloader.swift in Sources */,
 				413930E01A75E27A0086E4C1 /* Dictionary.swift in Sources */,
 				4126FD221A70E9D700C24380 /* Reflect.swift in Sources */,
 				413930E21A75E7A00086E4C1 /* SwiftyJSON.swift in Sources */,
+				414FE03A1A7A1A2600E5A268 /* MainNav.swift in Sources */,
 				332974351A6FD8CC00DBC453 /* FolderTableVC.swift in Sources */,
 				4126FD201A70E9D000C24380 /* String.swift in Sources */,
+				414FE03F1A7A2B4800E5A268 /* SafeURLRequest.swift in Sources */,
 				41D8EA231A78BCA40096080C /* LinkVC.swift in Sources */,
 				4126FD241A70FE7E00C24380 /* ReaderVC.swift in Sources */,
 				4154686B1A6E2B2200E4F255 /* AppDelegate.swift in Sources */,
