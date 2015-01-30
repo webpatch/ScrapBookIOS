@@ -9,13 +9,22 @@
 import Foundation
 class FolderTableVC:UITableViewController {
     var dataArr:[Folder] = [Folder]()
+    
+    override func viewDidLoad() {
+        self.tableView.tableFooterView = UIView()
+        self.tableView.estimatedRowHeight = 80
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("TableCell") as? UITableViewCell
+        var cell:FolderTableCell? = tableView.dequeueReusableCellWithIdentifier("TableCell") as? FolderTableCell
         if cell == nil{
-            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "TableCell")
+            cell = FolderTableCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "TableCell")
         }
         let f = dataArr[indexPath.row]
-        cell!.textLabel!.text = f.isFolder ? "[文件夹] \(f.title)" : f.title
+        cell!.imageView!.image = UIImage(named:f.isFolder ? "folder" : "page_white_word")
+        cell!.textLabel!.text = f.title
+        cell!.textLabel!.numberOfLines = 0
         return cell!
     }
     
@@ -36,6 +45,14 @@ class FolderTableVC:UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return 64
+//    }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1

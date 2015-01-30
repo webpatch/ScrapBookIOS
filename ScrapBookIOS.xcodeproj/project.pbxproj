@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		332974351A6FD8CC00DBC453 /* FolderTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332974341A6FD8CC00DBC453 /* FolderTableVC.swift */; };
+		412002BB1A7B53E5005C4F57 /* FolderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412002BA1A7B53E5005C4F57 /* FolderTableCell.swift */; };
 		4126FD1E1A70E5C800C24380 /* Dropbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4126FD1D1A70E5C800C24380 /* Dropbox.swift */; };
 		4126FD201A70E9D000C24380 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4126FD1F1A70E9D000C24380 /* String.swift */; };
 		4126FD221A70E9D700C24380 /* Reflect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4126FD211A70E9D700C24380 /* Reflect.swift */; };
@@ -44,6 +45,7 @@
 		05ADB03A8E6A27046177DF38 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FC7DC2E25DEA01BE523ACD9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		332974341A6FD8CC00DBC453 /* FolderTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderTableVC.swift; sourceTree = "<group>"; };
+		412002BA1A7B53E5005C4F57 /* FolderTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderTableCell.swift; sourceTree = "<group>"; };
 		4126FD1D1A70E5C800C24380 /* Dropbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dropbox.swift; sourceTree = "<group>"; };
 		4126FD1F1A70E9D000C24380 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		4126FD211A70E9D700C24380 /* Reflect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reflect.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				332974341A6FD8CC00DBC453 /* FolderTableVC.swift */,
 				41D8EA221A78BCA40096080C /* LinkVC.swift */,
 				414FE0391A7A1A2600E5A268 /* MainNav.swift */,
+				412002BA1A7B53E5005C4F57 /* FolderTableCell.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				414FE03A1A7A1A2600E5A268 /* MainNav.swift in Sources */,
 				332974351A6FD8CC00DBC453 /* FolderTableVC.swift in Sources */,
 				4126FD201A70E9D000C24380 /* String.swift in Sources */,
+				412002BB1A7B53E5005C4F57 /* FolderTableCell.swift in Sources */,
 				414FE03F1A7A2B4800E5A268 /* SafeURLRequest.swift in Sources */,
 				41D8EA231A78BCA40096080C /* LinkVC.swift in Sources */,
 				4126FD241A70FE7E00C24380 /* ReaderVC.swift in Sources */,

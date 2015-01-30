@@ -8,10 +8,7 @@
 
 import Foundation
 class Config:NSObject {
-    
-    
-    
-    
+   
     struct Static {
         static var instance:Config? = nil
         static var token:dispatch_once_t = 0

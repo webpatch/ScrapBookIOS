@@ -9,15 +9,21 @@
 import UIKit
 
 class LinkVC:UIViewController {
+    private let client_id = "vm6itv923vwov70"
+    private let client_secret = "8whkfns7bu4b7zf"
+    private let callbackURL = "http://localhost:8080/callback"
     
+    @IBOutlet weak var webView: UIWebView!
     override func viewDidLoad() {
         startServer()
-        
-        let r = NSURLRequest(URL: NSURL(string: "https://www.dropbox.com/1/oauth2/authorize?client_id=vm6itv923vwov70&response_type=code&redirect_uri=http://localhost:8080/callback".stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)!)
-        let v = UIWebView(frame: view.bounds)
-        v.backgroundColor = UIColor.grayColor()
-        view.addSubview(v)
-        v.loadRequest(r)
+        loadLoginView()
+    }
+    
+    func loadLoginView()
+    {
+        let r = NSURLRequest(URL: NSURL(string: "https://www.dropbox.com/1/oauth2/authorize?client_id=\(client_id)&response_type=code&redirect_uri=\(callbackURL)".stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)!)
+        webView.backgroundColor = UIColor.grayColor()
+        webView.loadRequest(r)
     }
     
     func startServer()
@@ -25,12 +31,12 @@ class LinkVC:UIViewController {
         let server = GCDWebServer()
         server.addHandlerForMethod("GET", path: "/callback", requestClass: GCDWebServerRequest.self) { (rq:GCDWebServerRequest!) -> GCDWebServerResponse! in
             let code = rq.query["code"] as NSString
-            let o2 = ["code":code,"grant_type":"authorization_code","client_id":"vm6itv923vwov70","client_secret":"8whkfns7bu4b7zf","redirect_uri":"http://localhost:8080/callback"]
-            let r2 = NSMutableURLRequest(URL: NSURL(string: "https://api.dropbox.com/1/oauth2/token")!)
-            r2.HTTPMethod = "POST"
-            r2.HTTPBody = o2.htmlParams.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
+            let arg = ["code":code,"grant_type":"authorization_code","client_id":self.client_id,"client_secret":self.client_secret,"redirect_uri":self.callbackURL]
+            let rq = NSMutableURLRequest(URL: NSURL(string: "https://api.dropbox.com/1/oauth2/token")!)
+            rq.HTTPMethod = "POST"
+            rq.HTTPBody = arg.htmlParams.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
             
-            NSURLConnection.sendAsynchronousRequest(r2, queue: NSOperationQueue(), completionHandler: { (rs:NSURLResponse!, d:NSData!, e:NSError!) -> Void in
+            NSURLConnection.sendAsynchronousRequest(rq, queue: NSOperationQueue(), completionHandler: { (rs:NSURLResponse!, d:NSData!, e:NSError!) -> Void in
                 let j = JSON(data:d)
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     Dropbox.sharedInstance().token = j["access_token"].stringValue
