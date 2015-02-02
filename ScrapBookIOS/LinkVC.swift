@@ -21,7 +21,8 @@ class LinkVC:UIViewController,UIWebViewDelegate {
         
         ac = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         self.view.addSubview(ac)
-        ac.hidden = true
+        ac.hidesWhenStopped = true
+        ac.stopAnimating()
         ac.center = view.center
     }
     
@@ -34,11 +35,11 @@ class LinkVC:UIViewController,UIWebViewDelegate {
     }
     
     func webViewDidStartLoad(webView: UIWebView) {
-        ac.hidden = false
+       ac.startAnimating()
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {
-       ac.hidden = true
+       ac.stopAnimating()
     }
     
     func startServer()
