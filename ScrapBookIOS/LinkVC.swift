@@ -9,8 +9,8 @@
 import UIKit
 
 class LinkVC:UIViewController {
-    private let client_id = "vm6itv923vwov70"
-    private let client_secret = "8whkfns7bu4b7zf"
+    private let client_id = "ht7uybl6q1plcqy"
+    private let client_secret = "1pio0sc5ea4g7e1"
     private let callbackURL = "http://localhost:8080/callback"
     
     @IBOutlet weak var webView: UIWebView!

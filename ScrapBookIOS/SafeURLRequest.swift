@@ -11,7 +11,7 @@ class SafeURLRequest:NSMutableURLRequest{
     init(path:NSString,token:String = "")
     {
         let url = path.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
-        super.init(URL: NSURL(string:url)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 30)
+        super.init(URL: NSURL(string:url)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 120)
         if !token.isEmpty {
            self.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }

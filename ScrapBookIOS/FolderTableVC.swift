@@ -50,10 +50,6 @@ class FolderTableVC:UITableViewController {
         return UITableViewAutomaticDimension
     }
     
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 64
-//    }
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
