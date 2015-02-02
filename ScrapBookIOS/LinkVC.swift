@@ -8,15 +8,21 @@
 
 import UIKit
 
-class LinkVC:UIViewController {
+class LinkVC:UIViewController,UIWebViewDelegate {
     private let client_id = "ht7uybl6q1plcqy"
     private let client_secret = "1pio0sc5ea4g7e1"
     private let callbackURL = "http://localhost:8080/callback"
     
+    private var ac:UIActivityIndicatorView!
     @IBOutlet weak var webView: UIWebView!
     override func viewDidLoad() {
         startServer()
         loadLoginView()
+        
+        ac = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        self.view.addSubview(ac)
+        ac.hidden = true
+        ac.center = view.center
     }
     
     func loadLoginView()
@@ -24,6 +30,15 @@ class LinkVC:UIViewController {
         let r = NSURLRequest(URL: NSURL(string: "https://www.dropbox.com/1/oauth2/authorize?client_id=\(client_id)&response_type=code&redirect_uri=\(callbackURL)".stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)!)
         webView.backgroundColor = UIColor.grayColor()
         webView.loadRequest(r)
+        webView.delegate = self
+    }
+    
+    func webViewDidStartLoad(webView: UIWebView) {
+        ac.hidden = false
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+       ac.hidden = true
     }
     
     func startServer()

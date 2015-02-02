@@ -8,7 +8,7 @@
         <!--Link-->
         <scene sceneID="OYI-A0-g4l">
             <objects>
-                <viewController storyboardIdentifier="LinkVC" automaticallyAdjustsScrollViewInsets="NO" id="udp-xf-Kk7" customClass="LinkVC" customModule="ScrapBookIOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LinkVC" automaticallyAdjustsScrollViewInsets="NO" id="udp-xf-Kk7" customClass="LinkVC" customModule="Scrap_Book" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3PP-Fs-Q4y"/>
                         <viewControllerLayoutGuide type="bottom" id="0Q3-yp-pkh"/>
@@ -42,7 +42,7 @@
         <!--Main Nav-->
         <scene sceneID="nCI-aE-l2m">
             <objects>
-                <navigationController id="uFP-6O-tmw" customClass="MainNav" customModule="ScrapBookIOS" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="uFP-6O-tmw" customClass="MainNav" customModule="Scrap_Book" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Wl-NN-5Hi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -50,12 +50,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FaQ-Te-sGA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="344" y="-380"/>
+            <point key="canvasLocation" x="330" y="-416"/>
         </scene>
-        <!--ReaderVC-->
+        <!--Title-->
         <scene sceneID="GS6-Po-zMx">
             <objects>
-                <viewController storyboardIdentifier="ReaderVC" id="vMt-xx-wiu" customClass="ReaderVC" customModule="ScrapBookIOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReaderVC" id="vMt-xx-wiu" customClass="ReaderVC" customModule="Scrap_Book" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uS4-oW-Y4O"/>
                         <viewControllerLayoutGuide type="bottom" id="Sew-Xm-ABX"/>
@@ -78,7 +78,21 @@
                             <constraint firstAttribute="trailing" secondItem="xDt-Fy-9cg" secondAttribute="trailing" id="tB7-YF-RMz"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="aQ5-pF-igw">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="CAQ-Ru-247">
+                            <stepper key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minimumValue="50" maximumValue="300" stepValue="10" id="TlL-gW-Y7o">
+                                <rect key="frame" x="-47" y="-14" width="94" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="change:" destination="vMt-xx-wiu" eventType="valueChanged" id="xDZ-ve-uLk"/>
+                                </connections>
+                            </stepper>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="stepper" destination="TlL-gW-Y7o" id="Ik1-BS-VXL"/>
                         <outlet property="webView" destination="xDt-Fy-9cg" id="5jA-Od-zCl"/>
                     </connections>
                 </viewController>
@@ -89,7 +103,7 @@
         <!--main-->
         <scene sceneID="dE0-KE-7q9">
             <objects>
-                <tableViewController storyboardIdentifier="MainTableVC" id="6iU-JN-Yck" customClass="MainTableVC" customModule="ScrapBookIOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MainTableVC" id="6iU-JN-Yck" customClass="MainTableVC" customModule="Scrap_Book" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gfV-5e-qyE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
