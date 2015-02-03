@@ -21,6 +21,6 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>CFBundleDisplayName</key>
-	<string>Scrap Book</string>
+	<string>$(PRODUCT_NAME)</string>
 </dict>
 </plist>

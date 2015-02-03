@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "415468641A6E2B2200E4F255"
-               BuildableName = "ScrapBookIOS.app"
+               BuildableName = "Scrap Book.app"
                BlueprintName = "ScrapBookIOS"
                ReferencedContainer = "container:ScrapBookIOS.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "415468641A6E2B2200E4F255"
-            BuildableName = "ScrapBookIOS.app"
+            BuildableName = "Scrap Book.app"
             BlueprintName = "ScrapBookIOS"
             ReferencedContainer = "container:ScrapBookIOS.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "415468641A6E2B2200E4F255"
-            BuildableName = "ScrapBookIOS.app"
+            BuildableName = "Scrap Book.app"
             BlueprintName = "ScrapBookIOS"
             ReferencedContainer = "container:ScrapBookIOS.xcodeproj">
          </BuildableReference>
@@ -94,7 +94,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "415468641A6E2B2200E4F255"
-            BuildableName = "ScrapBookIOS.app"
+            BuildableName = "Scrap Book.app"
             BlueprintName = "ScrapBookIOS"
             ReferencedContainer = "container:ScrapBookIOS.xcodeproj">
          </BuildableReference>

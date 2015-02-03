@@ -16,22 +16,36 @@ class LinkVC:UIViewController,UIWebViewDelegate {
     private var ac:UIActivityIndicatorView!
     @IBOutlet weak var webView: UIWebView!
     override func viewDidLoad() {
-        startServer()
+        initView()
+        startMonitorURLCallBack()
         loadLoginView()
-        
+    }
+    
+    func initView()
+    {
         ac = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         self.view.addSubview(ac)
         ac.hidesWhenStopped = true
         ac.stopAnimating()
         ac.center = view.center
+        
+        webView.delegate = self
     }
-    
+
     func loadLoginView()
     {
         let r = NSURLRequest(URL: NSURL(string: "https://www.dropbox.com/1/oauth2/authorize?client_id=\(client_id)&response_type=code&redirect_uri=\(callbackURL)".stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)!)
-        webView.backgroundColor = UIColor.grayColor()
         webView.loadRequest(r)
-        webView.delegate = self
+    }
+    
+    @IBAction func reload(sender: UIBarButtonItem) {
+        loadLoginView()
+    }
+    
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+        let a = UIAlertView(title: "Error", message: "Can't load the DropBox login page", delegate: nil, cancelButtonTitle: "I know")
+        a.show()
+        ac.stopAnimating()
     }
     
     func webViewDidStartLoad(webView: UIWebView) {
@@ -42,15 +56,14 @@ class LinkVC:UIViewController,UIWebViewDelegate {
        ac.stopAnimating()
     }
     
-    func startServer()
+    func startMonitorURLCallBack()
     {
         let server = GCDWebServer()
         server.addHandlerForMethod("GET", path: "/callback", requestClass: GCDWebServerRequest.self) { (rq:GCDWebServerRequest!) -> GCDWebServerResponse! in
             let code = rq.query["code"] as NSString
-            let arg = ["code":code,"grant_type":"authorization_code","client_id":self.client_id,"client_secret":self.client_secret,"redirect_uri":self.callbackURL]
-            let rq = NSMutableURLRequest(URL: NSURL(string: "https://api.dropbox.com/1/oauth2/token")!)
+            let rq = SafeURLRequest(path: "https://api.dropbox.com/1/oauth2/token")
             rq.HTTPMethod = "POST"
-            rq.HTTPBody = arg.htmlParams.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
+            rq.HTTPBodyDict = ["code":code,"grant_type":"authorization_code","client_id":self.client_id,"client_secret":self.client_secret,"redirect_uri":self.callbackURL]
             
             NSURLConnection.sendAsynchronousRequest(rq, queue: NSOperationQueue(), completionHandler: { (rs:NSURLResponse!, d:NSData!, e:NSError!) -> Void in
                 let j = JSON(data:d)

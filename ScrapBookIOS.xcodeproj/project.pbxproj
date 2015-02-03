@@ -58,7 +58,7 @@
 		414FE0391A7A1A2600E5A268 /* MainNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNav.swift; sourceTree = "<group>"; };
 		414FE03B1A7A1DCE00E5A268 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		414FE03E1A7A2B4800E5A268 /* SafeURLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeURLRequest.swift; sourceTree = "<group>"; };
-		415468651A6E2B2200E4F255 /* Scrap Book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scrap Book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		415468651A6E2B2200E4F255 /* ScrapBookIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrapBookIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		415468691A6E2B2200E4F255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4154686A1A6E2B2200E4F255 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4154686F1A6E2B2200E4F255 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 		415468661A6E2B2200E4F255 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				415468651A6E2B2200E4F255 /* Scrap Book.app */,
+				415468651A6E2B2200E4F255 /* ScrapBookIOS.app */,
 				4154687A1A6E2B2200E4F255 /* ScrapBookIOSTests.xctest */,
 			);
 			name = Products;
@@ -250,7 +250,7 @@
 			);
 			name = ScrapBookIOS;
 			productName = ScrapBookIOS;
-			productReference = 415468651A6E2B2200E4F255 /* Scrap Book.app */;
+			productReference = 415468651A6E2B2200E4F255 /* ScrapBookIOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 		415468791A6E2B2200E4F255 /* ScrapBookIOSTests */ = {
@@ -516,7 +516,7 @@
 				INFOPLIST_FILE = ScrapBookIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "Scrap Book";
+				PRODUCT_NAME = ScrapBookIOS;
 				SWIFT_OBJC_BRIDGING_HEADER = "ScrapBookIOS/Bridge-Header.h";
 			};
 			name = Debug;
@@ -534,7 +534,7 @@
 				INFOPLIST_FILE = ScrapBookIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "Scrap Book";
+				PRODUCT_NAME = ScrapBookIOS;
 				SWIFT_OBJC_BRIDGING_HEADER = "ScrapBookIOS/Bridge-Header.h";
 			};
 			name = Release;

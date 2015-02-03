@@ -8,7 +8,7 @@
         <!--Link-->
         <scene sceneID="OYI-A0-g4l">
             <objects>
-                <viewController storyboardIdentifier="LinkVC" automaticallyAdjustsScrollViewInsets="NO" id="udp-xf-Kk7" customClass="LinkVC" customModule="Scrap_Book" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LinkVC" automaticallyAdjustsScrollViewInsets="NO" id="udp-xf-Kk7" customClass="LinkVC" customModule="ScrapBookIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3PP-Fs-Q4y"/>
                         <viewControllerLayoutGuide type="bottom" id="0Q3-yp-pkh"/>
@@ -17,9 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wm3-4L-n8l">
+                            <webView contentMode="scaleToFill" misplaced="YES" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wm3-4L-n8l">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <dataDetectorType key="dataDetectorTypes"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -30,7 +31,13 @@
                             <constraint firstItem="0Q3-yp-pkh" firstAttribute="top" secondItem="wm3-4L-n8l" secondAttribute="bottom" id="uaO-bW-wv3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Link" id="JLz-b8-jCN"/>
+                    <navigationItem key="navigationItem" title="Link" id="JLz-b8-jCN">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="dDO-5E-kxb">
+                            <connections>
+                                <action selector="reload:" destination="udp-xf-Kk7" id="Ku9-Y7-8gZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="webView" destination="wm3-4L-n8l" id="bAP-GD-hT5"/>
                     </connections>
@@ -42,7 +49,7 @@
         <!--Main Nav-->
         <scene sceneID="nCI-aE-l2m">
             <objects>
-                <navigationController id="uFP-6O-tmw" customClass="MainNav" customModule="Scrap_Book" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="uFP-6O-tmw" customClass="MainNav" customModule="ScrapBookIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Wl-NN-5Hi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -55,7 +62,7 @@
         <!--Title-->
         <scene sceneID="GS6-Po-zMx">
             <objects>
-                <viewController storyboardIdentifier="ReaderVC" id="vMt-xx-wiu" customClass="ReaderVC" customModule="Scrap_Book" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReaderVC" id="vMt-xx-wiu" customClass="ReaderVC" customModule="ScrapBookIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uS4-oW-Y4O"/>
                         <viewControllerLayoutGuide type="bottom" id="Sew-Xm-ABX"/>
@@ -103,7 +110,7 @@
         <!--main-->
         <scene sceneID="dE0-KE-7q9">
             <objects>
-                <tableViewController storyboardIdentifier="MainTableVC" id="6iU-JN-Yck" customClass="MainTableVC" customModule="Scrap_Book" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MainTableVC" id="6iU-JN-Yck" customClass="MainTableVC" customModule="ScrapBookIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gfV-5e-qyE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
